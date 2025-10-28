@@ -2,15 +2,25 @@ import React, { useState } from 'react';
 
 const Forms = () => {
     const[formData,setFormData] = useState({
-        username: "Rupan",
+        username: "",
         password: "",
         email: "",
-        gender: "others"
+        gender: ""
     })
+
+   const handleSubmit = (e) =>{
+       e.preventDefault();
+       console.log("Registered User", formData)
+   }
+
+    const handleChange = (e) =>{
+       //console.log( e.target.value);
+       setFormData({...formData,[e.target.name]:e.target.value})   
+    }
     return (
         <div>
             <h1>Register Form</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <p>
                         <label>UserName:</label>
@@ -20,6 +30,7 @@ const Forms = () => {
                         type='text'
                         name='username'
                         value={formData.username}
+                        onChange={handleChange}
                         placeholder='Enter Your UserName'
                         required
                         />
@@ -34,6 +45,7 @@ const Forms = () => {
                         type='password'
                         name='password'
                         value={formData.password}
+                        onChange={handleChange}
                         placeholder='Enter Your Password'
                         required
                         />
@@ -48,6 +60,7 @@ const Forms = () => {
                         type="email"
                         name='email'
                         value={formData.email}
+                        onChange={handleChange}
                         placeholder='Enter Your Email Id'
                         required
                         />
@@ -58,7 +71,7 @@ const Forms = () => {
                         <label>Gender:</label>
                     </p>
                    <p>
-                    <select name="gender" value={formData.gender}>
+                    <select name="gender" value={formData.gender} onChange={handleChange}>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="others">Rather Not To Say</option>
