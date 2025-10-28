@@ -12,7 +12,15 @@ const MemoCallback = () => {
   const [search, setSearch] = useState("");
   return (
     <div>
-      <h1>Memoization</h1>
+     <input 
+     type="text"
+     name="search"
+     value={search}
+     onChange={handleChange}
+     placeholder="Search for category"
+     />
+      
+      <button onClick={()=>{setCount(val=>val+1)}}>Count: {count}</button>
     </div>
   );
 };
